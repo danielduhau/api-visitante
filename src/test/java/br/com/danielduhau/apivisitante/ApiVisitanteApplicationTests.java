@@ -1,5 +1,6 @@
 package br.com.danielduhau.apivisitante;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -8,6 +9,7 @@ class ApiVisitanteApplicationTests {
 
 	@Test
 	void contextLoads() {
+		Assertions.assertDoesNotThrow(() -> ApiVisitanteApplication.main(new String[]{}));
 	}
 
 }
