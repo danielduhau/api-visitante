@@ -3,6 +3,7 @@ package br.com.danielduhau.apivisitante.service;
 import br.com.danielduhau.apivisitante.dto.VisitanteRequestDto;
 import br.com.danielduhau.apivisitante.model.Visitante;
 import br.com.danielduhau.apivisitante.repository.VisitanteRepository;
+import br.com.danielduhau.apivisitante.validation.VisitanteValidation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,8 @@ public class VisitanteService {
     private final VisitanteRepository repository;
 
     public Visitante criar(VisitanteRequestDto dto){
+        VisitanteValidation.validarCriacaoVisitante(dto);
+
         var id = UUID.randomUUID().toString();
         var visitante = new Visitante(id, dto.getCpf(), dto.getNome());
         return repository.save(visitante);
